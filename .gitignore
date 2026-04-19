@@ -1,0 +1,17 @@
+# PlatformIO
+.pio/
+.pioenvs/
+.piolibdeps/
+libdeps/
+.vscode/
+
+# Environment
+.env
+
+# Data
+*.log
+qr.png
+
+# OS
+.DS_Store
+Thumbs.db
