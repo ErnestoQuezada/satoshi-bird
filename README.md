@@ -1,19 +1,23 @@
-# ⚡️ Bitcoin Switch (Standalone ESP32)
+# ⚡️ Satoshi Bird
 
-**Bitcoin Switch** is an open-source project that allows you to trigger physical hardware (relays, LEDs, motors) by sending a Bitcoin Lightning payment. 
+A pay-to-play Flappy Bird-style game powered by Bitcoin Lightning on the LILYGO T-Display ESP32.
+
+![Satoshi Bird](satoshi-bird.png)
+
+**Satoshi Bird** is an open-source project that allows you to play a Flappy Bird clone by sending a Bitcoin Lightning payment.
 
 This version runs in **Standalone Mode**, meaning the ESP32 connects directly to the [Blink (formerly Galoy) API](https://blink.sv) to monitor payments in real-time—no external server or backend required.
 
 ## 🚀 How it Works
 1. The **ESP32** connects to your WiFi.
 2. It polls the Blink API every 3 seconds to check for new incoming transactions.
-3. When a successful payment is detected, it activates a relay (or the onboard LED) for 5 seconds.
+3. When a successful payment is detected, it unlocks a game session of Satoshi Bird.
 
 ## 📂 Structure
 - `firmware/`: PlatformIO project for ESP32 (Arduino framework).
 
 ## 🛠 Prerequisites
-- **Hardware**: ESP32 Development Board, Relay Module (optional, connects to GPIO 5).
+- **Hardware**: LILYGO T-Display ESP32.
 - **Software**: PlatformIO (VSCode Extension recommended).
 - **Account**: A [Blink Wallet](https://blink.sv) account and an API Key.
 
@@ -30,7 +34,7 @@ Open `firmware/src/main.cpp` and update the following:
 
 ### 3. WiFi Configuration
 On the first boot (or if WiFi is lost), the ESP32 will host its own WiFi network:
-- **SSID**: `Bitcoin-Switch`
+- **SSID**: `Satoshi-Bird`
 - **Password**: `bitcoin123`
 
 Connect to this network with your phone or PC, and a portal will open to let you select your local WiFi and enter the password.
