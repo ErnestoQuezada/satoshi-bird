@@ -8,10 +8,21 @@
 #include <WiFiManager.h>
 
 
+// Fallbacks for environment variables (set in .env file)
+#ifndef BLINK_API_KEY
+#define BLINK_API_KEY "YOUR_API_KEY_HERE"
+#endif
+
+#ifndef WIFI_AP_NAME
+#define WIFI_AP_NAME "Bitcoin-Switch"
+#endif
+
+#ifndef WIFI_AP_PASSWORD
+#define WIFI_AP_PASSWORD "bitcoin123"
+#endif
+
 // Blink API Configuration
-// IMPORTANT: Do NOT commit your real API key to version control.
-const char *BLINK_API_KEY =
-    "blink_a1b2c3d4e5f6";
+const char *blinkApiKey = BLINK_API_KEY;
 const char *BLINK_API_URL = "https://api.blink.sv/graphql";
 
 // Global instances handled by singletons, but we need some state variables
@@ -61,7 +72,7 @@ void loop() {
     Renderer::getInstance().drawWifiConnecting();
 
     WiFiManager wm;
-    bool res = wm.autoConnect("Bitcoin-Switch", "bitcoin123");
+    bool res = wm.autoConnect(WIFI_AP_NAME, WIFI_AP_PASSWORD);
 
     if (!res) {
       Serial.println("Failed to connect to WiFi! Restarting...");

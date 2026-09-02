@@ -4,7 +4,7 @@
 #include <WiFiClientSecure.h>
 #include <ArduinoJson.h>
 
-extern const char *BLINK_API_KEY; // We'll keep this in main.cpp
+extern const char *blinkApiKey; // We'll keep this in main.cpp
 extern const char *BLINK_API_URL;
 
 WiFiClientSecure secureClient;
@@ -47,7 +47,7 @@ String BlinkAPI::getLatestReceiveTransaction() {
     }
 
     http.addHeader("Content-Type", "application/json");
-    http.addHeader("X-API-KEY", BLINK_API_KEY);
+    http.addHeader("X-API-KEY", blinkApiKey);
 
     const char *query = "{\"query\":\"query listTx { me { defaultAccount { transactions(first: 5) { edges { node { id direction status settlementAmount createdAt } } } } } }\"}";
 

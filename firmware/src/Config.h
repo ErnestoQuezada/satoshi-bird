@@ -11,9 +11,14 @@ namespace Config {
     // Network & API
     constexpr unsigned long POLLING_INTERVAL = 3000;
     
+// Fallbacks for environment variables
+#ifndef BLINK_LIGHTNING_ADDRESS
+#define BLINK_LIGHTNING_ADDRESS "lightning:acreonte@blink.sv"
+#endif
+
     // We will generate the invoice QR from a predefined string for now, or you can dynamically set it
     // In a real app, this should be fetched from Blink.
-    constexpr char INVOICE_STRING[] = "lightning:acreonte@blink.sv";
+    constexpr char INVOICE_STRING[] = BLINK_LIGHTNING_ADDRESS;
 
     // Display
     constexpr int SCREEN_WIDTH = 320; // Landscape
